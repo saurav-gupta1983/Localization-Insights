@@ -1,0 +1,3 @@
+ALTER TABLE WSRDATA ADD ResourceCount int DEFAULT NULL;
+ALTER TABLE WSRDATA ADD ResourceNames Varchar(500);
+ALTER TABLE WSRDATA ADD FeaturesTested Varchar(500);

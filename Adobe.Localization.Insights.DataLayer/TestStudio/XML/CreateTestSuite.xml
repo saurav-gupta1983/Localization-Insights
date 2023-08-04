@@ -1,0 +1,84 @@
+<TestCase>
+  <Environment>
+    <amkumarg>
+      <InputXML>
+        <SearchList>
+          <SearchObject>
+            <Title>ams_1</Title>
+            <Description>This is Test Suite Description</Description>
+            <Product>Test Studio</Product>
+            <Owner>tsuser1</Owner>
+            <TCApprovers>tsuser1</TCApprovers>
+            <TCReviewers>tsuser1</TCReviewers>
+            <tc_ids></tc_ids>
+            <ts_ids></ts_ids>
+          </SearchObject>
+        </SearchList>
+      </InputXML>
+    </amkumarg>
+    <qe>
+      <InputXML>
+        <SearchList>
+          <SearchObject>
+            <Title>ams_1</Title>
+            <Description>This is Test Suite Description</Description>
+            <Product>Test Studio</Product>
+            <Owner>tsuser1</Owner>
+            <TCApprovers>tsuser1</TCApprovers>
+            <TCReviewers>tsuser1</TCReviewers>
+            <tc_ids></tc_ids>
+            <ts_ids></ts_ids>
+          </SearchObject>
+        </SearchList>
+      </InputXML>
+    </qe>
+    <qa>
+      <InputXML>
+        <SearchList>
+          <SearchObject>
+            <Title>ams_1P</Title>
+            <Description>This is Test Suite Description</Description>
+            <Product>Test Studio</Product>
+            <Owner>tsuser1</Owner>
+            <TCApprovers>tsuser1</TCApprovers>
+            <TCReviewers>tsuser1</TCReviewers>
+            <tc_ids></tc_ids>
+            <ts_ids></ts_ids>
+          </SearchObject>
+        </SearchList>
+      </InputXML>
+    </qa>
+    <stage>
+      <InputXML>
+        <SearchList>
+          <SearchObject>
+            <Title>ams_1P</Title>
+            <Description>This is Test Suite Description</Description>
+            <Product>Test Studio</Product>
+            <Owner>tsuser1</Owner>
+            <TCApprovers>tsuser1</TCApprovers>
+            <TCReviewers>tsuser1</TCReviewers>
+            <tc_ids></tc_ids>
+            <ts_ids></ts_ids>
+          </SearchObject>
+        </SearchList>
+      </InputXML>
+    </stage>
+    <prod>
+      <InputXML>
+        <SearchList>
+          <SearchObject>
+            <Title>ams_1P</Title>
+            <Description>This is Test Suite Description</Description>
+            <Product>Test Studio</Product>
+            <Owner>tsuser1</Owner>
+            <TCApprovers>tsuser1</TCApprovers>
+            <TCReviewers>tsuser1</TCReviewers>
+            <tc_ids></tc_ids>
+            <ts_ids></ts_ids>
+          </SearchObject>
+        </SearchList>
+      </InputXML>
+    </prod>
+  </Environment>
+</TestCase>

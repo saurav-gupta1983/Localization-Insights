@@ -1,0 +1,32 @@
+<TestCase>
+  <ScriptData>
+    <TestCaseID>TC_149544</TestCaseID>
+    <TestCaseScenario>This Test Case Checks the fetchTestSuiteDetailsEx Functionality</TestCaseScenario>
+    <username>tsuser1</username>
+    <password>Te5t$tud</password>
+    <sessionID></sessionID>
+    <Environment>
+      <amkumarg>
+        <ts_id>24761</ts_id>
+      </amkumarg>
+      <qe>
+        <ts_id>24761</ts_id>
+      </qe>
+      <qa>
+        <ts_id>24770</ts_id>
+      </qa>
+      <stage>
+        <ts_id>26278</ts_id>
+      </stage>
+      <prod>
+        <ts_id>24770</ts_id>
+      </prod>
+    </Environment>
+    <fetchChildTC>TRUE</fetchChildTC>
+    <fetchChildTS>TRUE</fetchChildTS>
+    <fetchTCConfig>TRUE</fetchTCConfig>
+    <pageNumber>1</pageNumber>
+    <pageSize>10</pageSize>
+    <ExpectedResult>Pass</ExpectedResult>
+  </ScriptData>
+</TestCase>

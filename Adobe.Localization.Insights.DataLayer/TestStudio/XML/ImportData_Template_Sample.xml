@@ -1,0 +1,141 @@
+<testrunlist count="1" createNewSID="false" assignToPrimaryOwner="false" NoCopyTCOwner="true" copyStepsInfoFromTC="true" copyFileInfoFromTC="true" copyAutomationDataFromTC="false" overrideTCConfig="true" suiteRunDisplayName="SID_53459">
+          <executioninfo>
+            <exceptionlist>
+              <exception>
+                <attributes>
+                  <attribute>
+                    <key>Supported Browser</key>
+                    <type>1</type>
+                    <id>701</id>
+                    <valuelist>
+                      <attrvalue>
+                        <value>a</value>
+                        <id>3661</id>
+                        <externalid/>
+                      </attrvalue>
+                    </valuelist>
+                    <externalid/>
+                  </attribute>
+                  <attribute>
+                    <key>OS Plaform</key>
+                    <type>1</type>
+                    <id>461</id>
+                    <valuelist>
+                      <attrvalue>
+                        <value>a</value>
+                        <id>1501</id>
+                        <externalid/>
+                      </attrvalue>
+                    </valuelist>
+                    <externalid/>
+                  </attribute>
+                  <attribute>
+                    <key>PLATFORM</key>
+                    <type>2</type>
+                    <id>13</id>
+                    <valuelist>
+                      <attrvalue>
+                        <value>Mac All</value>
+                        <id>116</id>
+                        <externalid>041</externalid>
+                      </attrvalue>
+                    </valuelist>
+                    <externalid/>
+                  </attribute>
+                </attributes>
+              </exception>
+            </exceptionlist>
+            <tcidlist>
+              <tcid>1836470</tcid>
+            </tcidlist>
+            <productcombinationattributes>
+              <attribute>
+                <key>OS Plaform</key>
+                <type>1</type>
+                <id>461</id>
+                <valuelist>
+                  <attrvalue>
+                    <value>a</value>
+                    <id>1501</id>
+                    <externalid/>
+                  </attrvalue>
+                </valuelist>
+                <externalid/>
+              </attribute>
+              <attribute>
+                <key>Supported Browser</key>
+                <type>1</type>
+                <id>701</id>
+                <valuelist>
+                  <attrvalue>
+                    <value>a</value>
+                    <id>3661</id>
+                    <externalid/>
+                  </attrvalue>
+                </valuelist>
+                <externalid/>
+              </attribute>
+            </productcombinationattributes>
+            <globalattributes>
+              <attribute>
+                <key>PLATFORM</key>
+                <type>2</type>
+                <id>13</id>
+                <valuelist>
+                  <attrvalue>
+                    <value>Mac All</value>
+                    <id>116</id>
+                    <externalid>041</externalid>
+                  </attrvalue>
+                  <attrvalue>
+                    <value>ALL</value>
+                    <id>310</id>
+                    <externalid/>
+                  </attrvalue>
+                </valuelist>
+                <externalid/>
+              </attribute>
+            </globalattributes>
+            <product>
+              <idnameobject>
+                <name>Test Studio</name>
+                <id>687</id>
+              </idnameobject>
+            </product>
+            <productversion>
+              <idnameobject>
+                <name>Beta</name>
+              </idnameobject>
+            </productversion>
+            <buildnbr />
+            <milestone />
+            <buglist />
+            <creationdate>1320767099000</creationdate>
+            <modificationdate>1320767099000</modificationdate>
+            <createdby>
+              <idnameobject>
+                <name>tsuser1</name>
+                <id>11656</id>
+              </idnameobject>
+            </createdby>
+            <modifiedby>
+              <idnameobject>
+                <name>tsuser1</name>
+                <id>11656</id>
+              </idnameobject>
+            </modifiedby>
+            <subarealist />
+            <assignedto>
+              <idnameobject>
+                <name>tsuser1</name>
+                <id>11656</id>
+              </idnameobject>
+            </assignedto>
+            <status>
+              <idnameobject>
+                <name>Not Executed</name>
+                <id>8</id>
+              </idnameobject>
+            </status>
+          </executioninfo>
+</testrunlist>

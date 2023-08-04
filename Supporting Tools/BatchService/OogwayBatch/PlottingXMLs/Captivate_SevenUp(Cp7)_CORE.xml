@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content>
+  <Product>Captivate</Product>
+  <Version>SevenUp(Cp7)</Version>
+  <Series>
+    <Name>Closed-Deferred</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="230">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Closed-Fixed</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="764">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Closed-NeverFix</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="7">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Closed-Withdrawn</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="117">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-NeedsReview</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="116">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToBuild</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToDefer</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="122">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToFix</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="118">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToTest</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="179">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToTrack</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="15">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-Unassigned</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-Unverified</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="20">
+      </Point>
+    </Data>
+  </Series>
+</Content>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content>
+  <Product>Illustrator</Product>
+  <Version>17_CS7</Version>
+  <Series>
+    <Name>Closed-Deferred</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="816">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Closed-Fixed</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="1066">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Closed-NeverFix</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="53">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Closed-Withdrawn</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="576">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-NeedsReview</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToBuild</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToDefer</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToFix</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToTest</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToTrack</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="3">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-Unassigned</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-Unverified</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="1">
+      </Point>
+    </Data>
+  </Series>
+</Content>

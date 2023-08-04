@@ -1,0 +1,301 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Adobe.Localization.Insights.Web.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Oogway - Adobe Localization Insights</title>
+    <style type="text/css">
+        .FormTable
+        {
+            width: 1381px;
+        }
+        .style1
+        {
+            width: 40%;
+            height: 28px;
+        }
+        .style2
+        {
+            height: 36px;
+        }
+        .style3
+        {
+            width: 55px;
+        }
+        .Footer
+        {
+            position: absolute;
+            bottom: 0px;
+            background-color: #666;
+        }
+        .Panel legend
+        {
+            color: White;
+            font-size: small;
+        }
+    </style>
+</head>
+<%--<body onclick="HideDiv('autocomplete','theframe');">
+--%>
+<body style="background-color: #212121">
+    <form id="form1" runat="server">
+    <asp:Panel ID="PanelHeader" runat="server" Width="100%">
+        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+                <%-- <td style="width: 60px; height: 100px">
+                    <asp:Image ID="HeaderLogoImage" runat="server" ImageUrl="Images/Adobe_logo_new.GIF"
+                        Width="60px" />
+                </td>--%>
+                <td colspan="3">
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td colspan="2" align="right">
+                                <asp:DropDownList ID="DropDownListUserRoles" runat="server" OnSelectedIndexChanged="DropDownListUserRoles_OnSelectedIndexChanged"
+                                    AutoPostBack="true" Visible="false">
+                                </asp:DropDownList>
+                                <asp:DropDownList ID="DropDownListLocales" runat="server" OnSelectedIndexChanged="DropDownListLocales_OnSelectedIndexChanged"
+                                    AutoPostBack="true">
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <%--                        <tr>
+                            <td align="center">
+                                <asp:Label ID="LabelHeading" runat="server" Text="Header" Font-Names="Viner Hand ITC"
+                                    Font-Bold="true" Font-Size="XX-Large" ForeColor="#DB512D"></asp:Label>
+                            </td>
+                            <td valign="bottom" align="right">
+                                <asp:Panel ID="PanelHomePage" runat="server">
+                                    <table width="100%">
+                                        <tr>
+                                            <td align="right" class="style2">
+                                                <asp:Label ID="LabelLoginID" runat="server" Text="USER" ForeColor="#DB512D" Font-Size="Small"></asp:Label>
+                                                &nbsp;&nbsp; <a id="HomeTag" style="text-decoration: none" runat="server">
+                                                    <asp:ImageButton ID="HomeLinkButton" ToolTip="Home" runat="server" OnClick="Home_Click"
+                                                        ImageUrl="~/Images/Home.GIF"></asp:ImageButton>
+                                                    <asp:LinkButton ID="HomeTextLinkButton" runat="server" Text="Home" CssClass="HyperLinkMenu"
+                                                        ForeColor="#DB512D" OnClick="Home_Click"></asp:LinkButton>
+                                                    &nbsp;&nbsp;
+                                                    <asp:ImageButton ID="HelpLinkButton" runat="server" ToolTip="Help" ImageUrl="~/Images/help.GIF"
+                                                        CssClass="HyperLink" OnClientClick="window.open('../Help/OnlineHelpMainPage.htm');">
+                                                    </asp:ImageButton>
+                                                    <asp:LinkButton ID="HelpTextLinkButton" runat="server" Text="Help" CssClass="HyperLinkMenu"
+                                                        OnClientClick="window.open('../Help/OnlineHelpMainPage.htm');"></asp:LinkButton>                                                    
+                                                    &nbsp;&nbsp;
+                                                    <asp:ImageButton ID="LogoutLinkButton" ToolTip="Logout" ImageUrl="~/Images/logout.GIF"
+                                                        OnClick="Logout_Click" runat="server" Visible="true"></asp:ImageButton>
+                                                    <asp:LinkButton ID="LogOutTextLinkButton" runat="server" Text="Logout" CssClass="HyperLinkMenu"
+                                                        Visible="true" OnClick="Logout_Click" ForeColor="#DB512D"></asp:LinkButton>
+                                                    &nbsp;&nbsp; </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </asp:Panel>
+                            </td>
+                        </tr>--%>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 321px; height: 98px; vertical-align: middle;" align="left">
+                    <img src="../Images/Tree.png" style="text-align: center; vertical-align: middle;
+                        width: 321px; height: 98px" alt="" />
+                </td>
+                <td style="width: 50%; height: 98px; vertical-align: middle;" align="center">
+                    <img src="../Images/Oogway_Name.png" style="text-align: center; vertical-align: middle;
+                        width: 267px; height: 98px" alt="" />
+                </td>
+                <td style="width: 321px; height: 98px; vertical-align: middle;" align="right">
+                    <table>
+                        <tr>
+                            <td align="right" valign="bottom" style="vertical-align: middle">
+                                <asp:Label ID="LabelLoginID" runat="server" Text="USER" ForeColor="#DB512D" Font-Size="Small"></asp:Label>
+                                &nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td>
+                                <asp:ImageButton ID="HomeLinkButton" ToolTip="Home" runat="server" OnClick="Home_Click"
+                                    Width="58px" Height="68px" ImageUrl="~/Images/Home.png"></asp:ImageButton>
+                                <asp:ImageButton ID="LogoutLinkButton" ToolTip="Logout" ImageUrl="~/Images/logout.png"
+                                    Width="49px" Height="68px" OnClick="Logout_Click" runat="server" Visible="true">
+                                </asp:ImageButton>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table style="width: 100%" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+                <td style="background-color: transparent; width: 100%;">
+                    <table style="width: 100%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td style="width: 80%; height: 3px; background-color: #DB512D;" rowspan="" align="center">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
+    <table style="width: 100%">
+        <tr>
+            <td id="TDLeftPanel" runat="server" style="width: 15%; height: 100%">
+                <table style="width: 100%; height: 100%" border="2" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <table style="width: 100%; height: 100%">
+                                <tr>
+                                    <td>
+                                        <asp:Panel ID="LeftPanel" runat="server" Width="100%">
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td style="width: 100%;">
+                                                        <table style="width: 100%;">
+                                                            <tr>
+                                                                <td style="width: 100%;" rowspan="" align="left">
+                                                                    <asp:TreeView ID="DataTreeview" runat="server" Width="61%" Height="650px" ForeColor="Cyan"
+                                                                        OnSelectedNodeChanged="MasterTree_OnSelectedNodeChanged">
+                                                                        <Nodes>
+                                                                        </Nodes>
+                                                                        <HoverNodeStyle BackColor="#086BB5" Height="20px" />
+                                                                        <SelectedNodeStyle BackColor="#086BB5" Height="20px" />
+                                                                    </asp:TreeView>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </asp:Panel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100%; height: 109px">
+                                        <table style="width: 100%; height: 100%">
+                                            <tr>
+                                                <td style="width: 30%;">
+                                                </td>
+                                                <td align="center" style="width: 146px; height: 109px">
+                                                    <img src="../Images/IQE-Team.png" style="text-align: center; vertical-align: middle;
+                                                        width: 146px; height: 109px" alt="" />
+                                                </td>
+                                                <td style="width: 30%;">
+                                                </td>
+                                            </tr>
+                                            <tr style="height: 20px;">
+                                                <td>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td id="TDContentPanel" runat="server" style="width: 85%; height: 100%">
+                <asp:Panel ID="WrapperPanel" runat="server" Width="90%" Style="left: 20px; position: relative;
+                    top: 10px">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+                    </asp:ContentPlaceHolder>
+                </asp:Panel>
+            </td>
+        </tr>
+    </table>
+    <asp:Panel ID="PanelFooter" runat="server" Width="100%">
+        <table style="width: 100%">
+            <tr>
+                <td style="width: 80%; height: 2px; background-color: #DB512D;" rowspan="" align="center">
+                </td>
+            </tr>
+            <tr style="width: 100%">
+                <td style="width: 100%;">
+                    <table id="tblContent" style="width: 100%;" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="text-align: left; width: 80%;">
+                                <font style="color: #F3DDCB; font-weight: bold">©2012 Adobe Systems Incorporated. All
+                                    rights reserved. Localization Team (IQE) Confidential </font>
+                            </td>
+                            <td style="text-align: right; width: 20%">
+                                <%--<font style="color: White; font-weight: bold"><a href="http://icomm.corp.adobe.com/suggestionbox/suggestionbox.html">
+                                    Team</a> &nbsp;&nbsp; <a href="http://content/intranet/en/inside/aboutthissite.html">
+                                        About This Site</a> &nbsp;&nbsp; Site Owner: <a href="mailto:sauragup@adobe.com">Tell
+                                            Us</a> </font>--%>
+                                <asp:Menu ID="masterMenu" CssClass="Menu" runat="server" Width="100%" DynamicHorizontalOffset="2"
+                                    Orientation="Horizontal" EnableTheming="True" StaticSubMenuIndent="2" OnMenuItemClick="masterMenu_OnMenuItemClick"
+                                    StaticEnableDefaultPopOutImage="false" Height="20px" ForeColor="#F3DDCB">
+                                    <Items>
+                                        <%--<asp:MenuItem Text="Teams" Value="Team" SeparatorImageUrl="~/Images/nav_split.gif">
+                                            </asp:MenuItem>--%>
+                                        <asp:MenuItem Text="Contact Us" Value="ContactUs" SeparatorImageUrl="~/Images/nav_split.gif">
+                                        </asp:MenuItem>
+                                        <asp:MenuItem Text="About us" Value="AboutUs"></asp:MenuItem>
+                                    </Items>
+                                    <DynamicItemTemplate>
+                                        <%# Eval("Text") %>
+                                    </DynamicItemTemplate>
+                                    <StaticMenuItemStyle HorizontalPadding="0px" VerticalPadding="2px" ForeColor="#F3DDCB"
+                                        ItemSpacing="0px" CssClass="StaticMenuItemStyleCSS" />
+                                    <StaticSelectedStyle BackColor="#086BB5" VerticalPadding="2px" HorizontalPadding="0px"
+                                        ItemSpacing="0px" Height="20px" />
+                                    <DynamicMenuStyle ForeColor="White" HorizontalPadding="2px" VerticalPadding="0px" />
+                                    <DynamicMenuItemStyle HorizontalPadding="0px" VerticalPadding="0px" ForeColor="White"
+                                        Height="20px" BackColor="#185394" />
+                                    <StaticMenuStyle HorizontalPadding="0px" VerticalPadding="0px" />
+                                    <DynamicHoverStyle BackColor="#086BB5" Height="20px" ForeColor="#F3DDCB" />
+                                    <StaticHoverStyle Height="20px" BackColor="#086BB5" />
+                                </asp:Menu>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
+    <%-- <div style="text-align: left">
+        </div>
+        <div style="text-align: right">
+            <ul>
+                <li class="last"><a href="http://icomm.corp.adobe.com/suggestionbox/suggestionbox.html">
+                    Tell Adobe</a></li>
+                <li><a href="/content/intranet/en/inside/aboutthissite.html">About This Site</a></li>
+                <li>Site Owner: <a href="mailto:empcomm@adobe.com">Employee Communications</a></li>
+            </ul>--%>
+    <%--    <div>
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <table style="width: 100%">
+                        <tr style="height: 40px; width: 100%">
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100%; border-top: #808080 1px solid; border-left: #808080 1px solid;">
+                                <table id="tblContent" style="width: 100%;" cellpadding="0" cellspacing="0">
+                                    <tr style="width: 100%">
+                                        <td style="vertical-align: top" colspan="4">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr style="height: 3%; width: 100%">
+                            <td style="text-align: center; border-top: #808080 1px solid; height: 10%;">
+                                <asp:Label ID="copyriteLabel" runat="server" Text="Copyright @2012 Adobe - Localization Team"
+                                    Visible="true" ForeColor="#DB512D">
+                                </asp:Label>
+                            </td>
+                        </tr>
+                        <asp:HiddenField ID="UrlHiddenField" runat="server" />
+    <asp:HiddenField ID="IsDefectSearchCriteriaSavedHiddenField" runat="server" Value="false" />
+        </table> </td> </tr> </table>
+    </div>
+<iframe id="theframe" style="display: none;" src="javascript:false;" class="frmcls"
+            scrolling="yes"></iframe>
+        <div id="autocomplete" class="resdiv" style="background-color: #ccccff; display: none;">
+        </div>--%>
+    </form>
+</body>
+</html>

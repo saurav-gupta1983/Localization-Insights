@@ -1,0 +1,99 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Selection.Master.cs"
+    Inherits="Adobe.Localization.Insights.Web.Selection" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Oogway - Adobe Localization Insights</title>
+    <style type="text/css">
+        .FormTable
+        {
+            width: 1381px;
+        }
+        .style1
+        {
+            width: 40%;
+            height: 28px;
+        }
+        .style2
+        {
+            height: 36px;
+        }
+        .style3
+        {
+            width: 55px;
+        }
+        .Footer
+        {
+            position: relative;
+            bottom: -272px;
+        }
+    </style>
+</head>
+<%--<body onclick="HideDiv('autocomplete','theframe');">
+--%>
+<body style="background-color: #212121">
+    <form id="form1" runat="server">
+    <asp:Panel ID="PanelHeader" runat="server" Width="100%">
+        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+                <%-- <td style="width: 60px; height: 100px">
+                    <asp:Image ID="HeaderLogoImage" runat="server" ImageUrl="Images/Adobe_logo_new.GIF"
+                        Width="60px" />
+                </td>--%>
+                <td>
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td align="right">
+                                <asp:DropDownList ID="DropDownListLocales" runat="server" OnSelectedIndexChanged="DropDownListLocales_OnSelectedIndexChanged"
+                                    AutoPostBack="true">
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 321px; height: 98px; vertical-align: middle;" align="left">
+                    <img src="../Images/Tree.png" style="text-align: center; vertical-align: middle;
+                        width: 321px; height: 98px" alt="" />
+                </td>
+                <td style="height: 98px; vertical-align: middle;" align="center">
+                    <img src="../Images/Oogway_Name.png" style="text-align: center; vertical-align: middle;
+                        width: 267px; height: 98px" alt="" />
+                </td>
+                <td style="width: 321px; height: 98px; vertical-align: middle;" align="right">
+                </td>
+            </tr>
+            <tr style="height: 10px;">
+                <td>
+                </td>
+            </tr>
+        </table>
+        <table style="width: 100%" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+                <td style="background-color: transparent; width: 100%;">
+                    <table style="width: 100%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td style="width: 80%; height: 3px; background-color: #DB512D;" rowspan="" align="center">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
+    <table style="width: 100%; height: 100%">
+        <tr style="width: 100%; height: 100%">
+            <td id="TDContentPanel" runat="server" align="center">
+                <asp:Panel ID="WrapperPanel" runat="server" Width="100%" Style="position: relative;
+                    top: 10px">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+                    </asp:ContentPlaceHolder>
+                </asp:Panel>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

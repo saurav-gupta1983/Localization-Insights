@@ -1,0 +1,51 @@
+Select if(pt.PhaseType='Sprints' OR pt.PhaseType='Others', 'Sprints', 'Releases') As Delivery, pv.ProductVersion, if(pt.PhaseType='Others','Adhoc',if(pt.PhaseType='Sprints',ps.Sprint,pt.PhaseType)) As PhaseType, vt.VendorType, 
+wp.WSRParameter, Sum(Efforts)
+from wsrdata wd
+INNER JOIN wsrdetails D
+ON wd.WSRDataID = D.WSRDataID
+INNER JOIN Weeks w
+ON w.WeekID = wd.WeekID
+INNER JOIN wsrparameters wp
+ON D.WSRParameterID = wp.WSRParameterID
+INNER JOIN wsrsections ws
+ON wp.WSRSectionID = ws.WSRSectionID
+INNER JOIN projectphases pp
+ON pp.ProjectPhaseID = wd.ProjectPhaseID
+INNER JOIN productversions pv
+ON pv.ProductVersionID = pp.ProductVersionID
+AND pv.ProductID = 1
+INNER JOIN phasetypes pt
+ON pt.PhaseTypeID = pp.PhaseTypeID
+INNER JOIN vendortypes vt
+ON vt.VendorTypeID = pp.TestingTypeID
+LEFT OUTER JOIN productsprints ps
+ON ps.ProductSprintID = pp.ProductSprintID
+Group By Delivery, pv.ProductVersion, PhaseType, vt.VendorType, wp.WSRParameter
+Order By pp.testingtypeid, wp.WSRSectionID, wp.WSRParameter
+
+Select if(pt.PhaseType='Sprints' OR pt.PhaseType='Others', 'Sprints', 'Releases') As Delivery, pv.ProductVersion, if(pt.PhaseType='Others','Adhoc',if(pt.PhaseType='Sprints',ps.Sprint,pt.PhaseType)) As PhaseType, vt.VendorType, 
+wp.WSRParameter, Sum(Efforts)
+from wsrdata wd
+INNER JOIN wsrdetails D
+ON wd.WSRDataID = D.WSRDataID
+INNER JOIN Weeks w
+ON w.WeekID = wd.WeekID
+INNER JOIN wsrparameters wp
+ON D.WSRParameterID = wp.WSRParameterID
+INNER JOIN wsrsections ws
+ON wp.WSRSectionID = ws.WSRSectionID
+INNER JOIN projectphases pp
+ON pp.ProjectPhaseID = wd.ProjectPhaseID
+INNER JOIN productversions pv
+ON pv.ProductVersionID = pp.ProductVersionID
+AND pv.ProductID = 1
+INNER JOIN phasetypes pt
+ON pt.PhaseTypeID = pp.PhaseTypeID
+INNER JOIN vendortypes vt
+ON vt.VendorTypeID = pp.TestingTypeID
+LEFT OUTER JOIN productsprints ps
+ON ps.ProductSprintID = pp.ProductSprintID
+Group By Delivery, pv.ProductVersion, PhaseType, vt.VendorType, wp.WSRParameter
+Order By pp.testingtypeid, wp.WSRSectionID, wp.WSRParameter
+
+

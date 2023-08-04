@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Config>
+  <Products>
+    <Product Family="Standard" Name="Captivate">
+      <Versions>
+        <Version>SevenUp(Cp7)</Version>
+      </Versions>
+    </Product>
+    <Product Family="Standard" Name="Director">
+      <Versions>
+        <Version>12</Version>
+      </Versions>
+    </Product>
+    <Product Family="FrameMaker" Name="FrameMaker">
+      <Versions>
+        <Version>12</Version>
+      </Versions>
+    </Product>
+    <Product Family="Connect" Name="Presenter">
+      <Versions>
+        <Version>9</Version>
+      </Versions>
+    </Product>
+    <Product Family="InDesign" Name="InDesign">
+      <Versions>
+        <Version>CS7</Version>
+       </Versions>
+    </Product>
+    <Product Family="Illustrator" Name="Illustrator">
+      <Versions>
+        <Version>17_CS7</Version>
+        <Version>18.0</Version>
+        <Version>18_F1</Version>
+      </Versions>
+    </Product>
+    <Product Family="Dreamweaver" Name="Dreamweaver">
+      <Versions>
+        <Version>Dreamweaver 12</Version>
+      </Versions>
+    </Product>
+    <Product Family="Photoshop" Name="Elements">
+      <Versions>
+        <Version>12</Version>
+      </Versions>
+    </Product>
+    <Product Family="Photoshop" Name="Elements Organizer">
+      <Versions>
+        <Version>12</Version>
+      </Versions>
+    </Product>
+    <Product Family="DVA" Name="Premiere Elements">
+      <Versions>
+        <Version>12.0</Version>
+      </Versions>
+    </Product>
+    <Product Family="Flash" Name="Scout">
+      <Versions>
+        <Version>1.1</Version>
+      </Versions>
+    </Product>
+  </Products>
+  <Keywords>
+    <Keyword>INTL-DoNotLocalized</Keyword>
+    <Keyword>INTL-FileSystem</Keyword>
+    <Keyword>INTL-LocaleAwareness</Keyword>
+    <Keyword>INTL-Localizability</Keyword>
+    <Keyword>INTL-Unicode</Keyword>
+    <Keyword>LOC-CorruptedString</Keyword>
+    <Keyword>LOC-Function</Keyword>
+    <Keyword>LOC-HotKey</Keyword>
+    <Keyword>LOC-Layout</Keyword>
+    <Keyword>LOC-NotTranslated</Keyword>
+    <Keyword>LOC-Other</Keyword>
+    <Keyword>LOC-Shortcut</Keyword>
+    <Keyword>LOC-WrongTranslation</Keyword>
+  </Keywords>
+</Config>

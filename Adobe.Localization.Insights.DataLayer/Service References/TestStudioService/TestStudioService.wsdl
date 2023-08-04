@@ -1,0 +1,1968 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="http://webservice.server.teststudio.tools.cst.adobe.com/" xmlns:ns4="error.server.teststudio.tools.cst.adobe.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns5="dto.common.server.teststudio.tools.cst.adobe.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="tr.dto.common.server.teststudio.tools.cst.adobe.com" xmlns:ns1="ts.dto.common.server.teststudio.tools.cst.adobe.com" xmlns:ns3="tc.dto.common.server.teststudio.tools.cst.adobe.com" name="TestStudioService" targetNamespace="http://webservice.server.teststudio.tools.cst.adobe.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema targetNamespace="error.server.teststudio.tools.cst.adobe.com" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ErrorEvent">
+        <xs:sequence>
+          <xs:element name="errorCode" type="xs:int" />
+          <xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:tns="tc.dto.common.server.teststudio.tools.cst.adobe.com" xmlns:ns1="dto.common.server.teststudio.tools.cst.adobe.com" targetNamespace="tc.dto.common.server.teststudio.tools.cst.adobe.com" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="dto.common.server.teststudio.tools.cst.adobe.com" />
+      <xs:complexType name="Attribute">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="externalID" type="xs:string" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="key" type="xs:string" />
+          <xs:element name="type" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="values" nillable="true" type="tns:AttrValue" />
+          <xs:element name="visible" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AttrValue">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="externalID" type="xs:string" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element name="selected" type="xs:boolean" />
+          <xs:element minOccurs="0" name="value" type="xs:string" />
+          <xs:element name="visible" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TCVersion">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int" />
+          <xs:element name="isActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="subArea" nillable="true" type="ns1:IDNameObject" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TCStepInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="desc" type="xs:string" />
+          <xs:element minOccurs="0" name="exresult" type="xs:string" />
+          <xs:element name="glossaryId" type="xs:int" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element name="sno" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TCComments">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="comment" type="xs:string" />
+          <xs:element minOccurs="0" name="commentBy" type="ns1:IDNameObject" />
+          <xs:element name="commentOn" type="xs:long" />
+          <xs:element name="id" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TCHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="changedBy" type="ns1:IDNameObject" />
+          <xs:element name="changedOn" type="xs:long" />
+          <xs:element minOccurs="0" name="fieldName" type="xs:string" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="newValue" type="xs:string" />
+          <xs:element minOccurs="0" name="oldValue" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TCFileInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="addedBy" type="ns1:IDNameObject" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="ref" type="xs:string" />
+          <xs:element minOccurs="0" name="refFileTypeName" type="ns1:IDNameObject" />
+          <xs:element name="size" type="xs:int" />
+          <xs:element name="type" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ns4="ts.dto.common.server.teststudio.tools.cst.adobe.com" xmlns:ns5="error.server.teststudio.tools.cst.adobe.com" xmlns:ns2="tc.dto.common.server.teststudio.tools.cst.adobe.com" xmlns:ns1="dto.common.server.teststudio.tools.cst.adobe.com" xmlns:ns3="tr.dto.common.server.teststudio.tools.cst.adobe.com" targetNamespace="http://webservice.server.teststudio.tools.cst.adobe.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="dto.common.server.teststudio.tools.cst.adobe.com" />
+      <xs:import namespace="tc.dto.common.server.teststudio.tools.cst.adobe.com" />
+      <xs:import namespace="tr.dto.common.server.teststudio.tools.cst.adobe.com" />
+      <xs:import namespace="ts.dto.common.server.teststudio.tools.cst.adobe.com" />
+      <xs:import namespace="error.server.teststudio.tools.cst.adobe.com" />
+      <xs:element name="FetchDuplicateTSEntities" type="tns:FetchDuplicateTSEntities" />
+      <xs:element name="FetchDuplicateTSEntitiesResponse" type="tns:FetchDuplicateTSEntitiesResponse" />
+      <xs:element name="SessionValidationException" type="tns:SessionValidationException" />
+      <xs:element name="TSWebSercviceException" type="tns:TSWebSercviceException" />
+      <xs:element name="addTCToTS" type="tns:addTCToTS" />
+      <xs:element name="addTCToTSResponse" type="tns:addTCToTSResponse" />
+      <xs:element name="addTSToTS" type="tns:addTSToTS" />
+      <xs:element name="addTSToTSResponse" type="tns:addTSToTSResponse" />
+      <xs:element name="bulkUpdate" type="tns:bulkUpdate" />
+      <xs:element name="bulkUpdateResponse" type="tns:bulkUpdateResponse" />
+      <xs:element name="cloneTestCases" type="tns:cloneTestCases" />
+      <xs:element name="cloneTestCasesResponse" type="tns:cloneTestCasesResponse" />
+      <xs:element name="createSearch" type="tns:createSearch" />
+      <xs:element name="createSearchResponse" type="tns:createSearchResponse" />
+      <xs:element name="createTestRuns" type="tns:createTestRuns" />
+      <xs:element name="createTestRunsResponse" type="tns:createTestRunsResponse" />
+      <xs:element name="createTestSuite" type="tns:createTestSuite" />
+      <xs:element name="createTestSuiteResponse" type="tns:createTestSuiteResponse" />
+      <xs:element name="deleteData" type="tns:deleteData" />
+      <xs:element name="deleteDataResponse" type="tns:deleteDataResponse" />
+      <xs:element name="deleteSavedSearch" type="tns:deleteSavedSearch" />
+      <xs:element name="deleteSavedSearchResponse" type="tns:deleteSavedSearchResponse" />
+      <xs:element name="estimateTCExecutionTime" type="tns:estimateTCExecutionTime" />
+      <xs:element name="estimateTCExecutionTimeResponse" type="tns:estimateTCExecutionTimeResponse" />
+      <xs:element name="estimateTRExecutionTime" type="tns:estimateTRExecutionTime" />
+      <xs:element name="estimateTRExecutionTimeResponse" type="tns:estimateTRExecutionTimeResponse" />
+      <xs:element name="estimateTSExecutionTime" type="tns:estimateTSExecutionTime" />
+      <xs:element name="estimateTSExecutionTimeResponse" type="tns:estimateTSExecutionTimeResponse" />
+      <xs:element name="exportAllProductIdName" type="tns:exportAllProductIdName" />
+      <xs:element name="exportAllProductIdNameResponse" type="tns:exportAllProductIdNameResponse" />
+      <xs:element name="exportData" type="tns:exportData" />
+      <xs:element name="exportDataResponse" type="tns:exportDataResponse" />
+      <xs:element name="exportDataWithCS" type="tns:exportDataWithCS" />
+      <xs:element name="exportDataWithCSResponse" type="tns:exportDataWithCSResponse" />
+      <xs:element name="exportDefaultAttributes" type="tns:exportDefaultAttributes" />
+      <xs:element name="exportDefaultAttributesResponse" type="tns:exportDefaultAttributesResponse" />
+      <xs:element name="exportExecModes" type="tns:exportExecModes" />
+      <xs:element name="exportExecModesResponse" type="tns:exportExecModesResponse" />
+      <xs:element name="exportGlobalAttributes" type="tns:exportGlobalAttributes" />
+      <xs:element name="exportGlobalAttributesResponse" type="tns:exportGlobalAttributesResponse" />
+      <xs:element name="exportPriorities" type="tns:exportPriorities" />
+      <xs:element name="exportPrioritiesResponse" type="tns:exportPrioritiesResponse" />
+      <xs:element name="exportProductInfo" type="tns:exportProductInfo" />
+      <xs:element name="exportProductInfoResponse" type="tns:exportProductInfoResponse" />
+      <xs:element name="exportSavedSearch" type="tns:exportSavedSearch" />
+      <xs:element name="exportSavedSearchResponse" type="tns:exportSavedSearchResponse" />
+      <xs:element name="exportSearch" type="tns:exportSearch" />
+      <xs:element name="exportSearchResponse" type="tns:exportSearchResponse" />
+      <xs:element name="exportTCStatus" type="tns:exportTCStatus" />
+      <xs:element name="exportTCStatusResponse" type="tns:exportTCStatusResponse" />
+      <xs:element name="exportTRReasonList" type="tns:exportTRReasonList" />
+      <xs:element name="exportTRReasonListResponse" type="tns:exportTRReasonListResponse" />
+      <xs:element name="exportTRStatus" type="tns:exportTRStatus" />
+      <xs:element name="exportTRStatusResponse" type="tns:exportTRStatusResponse" />
+      <xs:element name="exportTRStepStatus" type="tns:exportTRStepStatus" />
+      <xs:element name="exportTRStepStatusResponse" type="tns:exportTRStepStatusResponse" />
+      <xs:element name="exportUserInfo" type="tns:exportUserInfo" />
+      <xs:element name="exportUserInfoResponse" type="tns:exportUserInfoResponse" />
+      <xs:element name="fetchAmalgmConfigs" type="tns:fetchAmalgmConfigs" />
+      <xs:element name="fetchAmalgmConfigsResponse" type="tns:fetchAmalgmConfigsResponse" />
+      <xs:element name="fetchSuiteRunDetails" type="tns:fetchSuiteRunDetails" />
+      <xs:element name="fetchSuiteRunDetailsEx" type="tns:fetchSuiteRunDetailsEx" />
+      <xs:element name="fetchSuiteRunDetailsExResponse" type="tns:fetchSuiteRunDetailsExResponse" />
+      <xs:element name="fetchSuiteRunDetailsResponse" type="tns:fetchSuiteRunDetailsResponse" />
+      <xs:element name="fetchSuiteRuns" type="tns:fetchSuiteRuns" />
+      <xs:element name="fetchSuiteRunsResponse" type="tns:fetchSuiteRunsResponse" />
+      <xs:element name="fetchTestSuite" type="tns:fetchTestSuite" />
+      <xs:element name="fetchTestSuiteDetails" type="tns:fetchTestSuiteDetails" />
+      <xs:element name="fetchTestSuiteDetailsEx" type="tns:fetchTestSuiteDetailsEx" />
+      <xs:element name="fetchTestSuiteDetailsExResponse" type="tns:fetchTestSuiteDetailsExResponse" />
+      <xs:element name="fetchTestSuiteDetailsResponse" type="tns:fetchTestSuiteDetailsResponse" />
+      <xs:element name="fetchTestSuiteResponse" type="tns:fetchTestSuiteResponse" />
+      <xs:element name="getNotifications" type="tns:getNotifications" />
+      <xs:element name="getNotificationsResponse" type="tns:getNotificationsResponse" />
+      <xs:element name="importData" type="tns:importData" />
+      <xs:element name="importDataResponse" type="tns:importDataResponse" />
+      <xs:element name="login" type="tns:login" />
+      <xs:element name="loginResponse" type="tns:loginResponse" />
+      <xs:element name="logout" type="tns:logout" />
+      <xs:element name="logoutResponse" type="tns:logoutResponse" />
+      <xs:element name="modifyTR" type="tns:modifyTR" />
+      <xs:element name="modifyTRResponse" type="tns:modifyTRResponse" />
+      <xs:element name="sessionDetails" type="tns:sessionDetails" />
+      <xs:element name="sessionDetailsResponse" type="tns:sessionDetailsResponse" />
+      <xs:complexType name="login">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ldapID" type="xs:string" />
+          <xs:element minOccurs="0" name="ldapPasswd" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="loginResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="logout">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="jSessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="logoutResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sc" type="ns1:SearchCriterion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="idList" type="xs:int" />
+          <xs:element name="ielementType" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNotifications">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:int" />
+          <xs:element name="productId" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNotificationsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="importData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="strData" type="xs:string" />
+          <xs:element name="ielementType" type="xs:int" />
+          <xs:element name="iAction" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="importDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportDataWithCS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="strData" type="xs:string" />
+          <xs:element name="ielementType" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+          <xs:element name="showCS" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportDataWithCSResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="strData" type="xs:string" />
+          <xs:element name="ielementType" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportProductInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="prod" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" name="version" type="ns1:IDNameObject" />
+          <xs:element name="fetchOnlyVersions" type="xs:boolean" />
+          <xs:element name="fetchOnlySubarea" type="xs:boolean" />
+          <xs:element name="fetchFullInfo" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportProductInfoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportAllProductIdName">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportAllProductIdNameResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportGlobalAttributes">
+        <xs:sequence>
+          <xs:element name="fetchCombinational" type="xs:boolean" />
+          <xs:element name="fetchGeneral" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportGlobalAttributesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportPriorities">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportPrioritiesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportUserInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="strLDAPId" type="xs:string" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportUserInfoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportTCStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportTCStatusResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportTRStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportTRStatusResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportTRStepStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportTRStepStatusResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportExecModes">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportExecModesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="modifyTR">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="strData" type="xs:string" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="modifyTRResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sessionDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sessionDetailsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportDefaultAttributes">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="prodName" type="xs:string" />
+          <xs:element name="fetchProdGenDefault" type="xs:boolean" />
+          <xs:element name="fetchProdCombDefault" type="xs:boolean" />
+          <xs:element name="fetchGlobCombDefault" type="xs:boolean" />
+          <xs:element name="fetchGlobGenDefault" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportDefaultAttributesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createSearch">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="scList" type="ns1:SearchCriterion" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createSearchResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportSearch">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element name="fetchType" type="xs:int" />
+          <xs:element name="fetchOnlyMySearch" type="xs:boolean" />
+          <xs:element name="fetchPublic" type="xs:boolean" />
+          <xs:element name="fetchPrivate" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportSearchResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteSavedSearch">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="svList" type="tns:savedSearch" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="savedSearch">
+        <xs:sequence>
+          <xs:element name="fetchType" type="xs:int" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element name="public" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteSavedSearchResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportTRReasonList">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportTRReasonListResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="bulkUpdate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="mod" type="tns:modifyHandler" />
+          <xs:element name="ielementType" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="modifyHandler">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="attrActionDescriptor" nillable="true" type="tns:attributeActionDescriptor" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="idList" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="idNameActionDescriptor" nillable="true" type="tns:IdnameActionDescriptor" />
+          <xs:element name="savedSearchId" type="xs:int" />
+          <xs:element minOccurs="0" name="searchob" type="ns1:SearchCriterion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="strActionDescriptor" nillable="true" type="tns:stringActionDescriptor" />
+          <xs:element minOccurs="0" name="tcVersionActionDescriptor" type="tns:TCVersionActionDescriptor" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="attributeActionDescriptor">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:actionDescriptor">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="parameters" nillable="true" type="ns2:Attribute" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="actionDescriptor">
+        <xs:sequence>
+          <xs:element name="action" type="xs:int" />
+          <xs:element minOccurs="0" name="fieldName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="IdnameActionDescriptor">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:actionDescriptor">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="parameters" nillable="true" type="ns1:IDNameObject" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="stringActionDescriptor">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:actionDescriptor">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="parameter" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TCVersionActionDescriptor">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:actionDescriptor">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="parameters" nillable="true" type="tns:TCVersionWS" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TCVersionWS">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns2:TCVersion">
+            <xs:sequence>
+              <xs:element name="copySubAreaHierarchy" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="bulkUpdateResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchAmalgmConfigs">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sc" type="ns1:SearchCriterion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="idList" type="xs:int" />
+          <xs:element name="ts_id" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchAmalgmConfigsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createTestRuns">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="refTR" type="tns:ReferenceTR" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="selectedConfigs" type="tns:selectedConfigs" />
+          <xs:element minOccurs="0" name="sc" type="ns1:SearchCriterion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="idList" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReferenceTR">
+        <xs:sequence>
+          <xs:element name="assignToPrimaryOwner" type="xs:boolean" />
+          <xs:element minOccurs="0" name="assignedTo" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="bugsid" nillable="true" type="xs:string" />
+          <xs:element name="copyAutomationDataFromTC" type="xs:boolean" />
+          <xs:element name="copyExecutionModeFromTC" type="xs:boolean" />
+          <xs:element name="copyFileInfoFromTC" type="xs:boolean" />
+          <xs:element name="copyOwnerInfoFromParent" type="xs:boolean" />
+          <xs:element name="copyStepsInfoFromTC" type="xs:boolean" />
+          <xs:element minOccurs="0" name="duplicateCriteria" type="ns3:DuplicateTRCriteria" />
+          <xs:element name="eenddate" type="xs:long" />
+          <xs:element name="estartdate" type="xs:long" />
+          <xs:element minOccurs="0" name="executionMode" type="xs:string" />
+          <xs:element name="noCopyTCOwner" type="xs:boolean" />
+          <xs:element name="saveConfig" type="xs:boolean" />
+          <xs:element name="staticSuite" type="xs:boolean" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element minOccurs="0" name="suiteID" type="xs:string" />
+          <xs:element minOccurs="0" name="suiteName" type="xs:string" />
+          <xs:element minOccurs="0" name="suiteRunID" type="xs:string" />
+          <xs:element minOccurs="0" name="testrunname" type="xs:string" />
+          <xs:element name="time" type="xs:int" />
+          <xs:element name="useSuiteRunID" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="selectedConfigs">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="build" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="globalAttrs" nillable="true" type="ns2:Attribute" />
+          <xs:element minOccurs="0" name="milestone" type="xs:string" />
+          <xs:element minOccurs="0" name="product" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="productAttrs" nillable="true" type="ns2:Attribute" />
+          <xs:element minOccurs="0" name="selVersion" type="ns1:IDNameObject" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createTestRunsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cloneTestCases">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sc" type="ns1:SearchCriterion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="idList" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cloneTestCasesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchSuiteRuns">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sc" type="ns1:SearchCriterion" />
+          <xs:element name="fetchOwners" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchSuiteRunsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns4:SuiteRun" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SessionValidationException">
+        <xs:sequence>
+          <xs:element name="errorCode" type="xs:int" />
+          <xs:element minOccurs="0" name="errorDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TSWebSercviceException">
+        <xs:sequence>
+          <xs:element name="errorCode" type="xs:int" />
+          <xs:element minOccurs="0" name="errorDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportSavedSearch">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sc" type="ns1:SearchCriterion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="idList" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="exportSavedSearchResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:SearchCriterion" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createTestSuite">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tsList" type="tns:TSInfo" />
+          <xs:element name="allowDuplicateInSuites" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TSInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="automationData" type="xs:string" />
+          <xs:element minOccurs="0" name="createdBy" type="ns1:IDNameObject" />
+          <xs:element name="creationDate" type="xs:long" />
+          <xs:element name="deleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="desc" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="entityLevel" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="entityPath" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="externalID" type="xs:string" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element name="modificationDate" type="xs:long" />
+          <xs:element minOccurs="0" name="modifiedBy" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="owners" nillable="true" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="parentTSId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="product" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tsEntity" nillable="true" type="tns:TSEntity" />
+          <xs:element minOccurs="0" name="tsID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TSEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="tc" type="tns:TempTCInfo" />
+          <xs:element minOccurs="0" name="ts" type="tns:TSInfo" />
+          <xs:element name="type" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TempTCInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="approver" nillable="true" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" name="automationData" type="xs:string" />
+          <xs:element minOccurs="0" name="automationId" type="xs:string" />
+          <xs:element minOccurs="0" name="automationSystem" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="comments" nillable="true" type="ns2:TCComments" />
+          <xs:element minOccurs="0" name="createdBy" type="ns1:IDNameObject" />
+          <xs:element name="creationDate" type="xs:long" />
+          <xs:element minOccurs="0" name="customerName" type="xs:string" />
+          <xs:element name="deleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="desc" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="entityLevel" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="entityPath" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="estTime" type="xs:string" />
+          <xs:element minOccurs="0" name="externalID" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="globalAttr" nillable="true" type="ns2:Attribute" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="globalGeneralAttr" nillable="true" type="ns2:Attribute" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="history" nillable="true" type="ns2:TCHistory" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element name="modifcationDate" type="xs:long" />
+          <xs:element name="modificationDate" type="xs:long" />
+          <xs:element minOccurs="0" name="modifiedBy" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="owner" nillable="true" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="parentTSId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="priority" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="product" nillable="true" type="tns:tempProdInfo" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="refFiles" nillable="true" type="ns2:TCFileInfo" />
+          <xs:element minOccurs="0" name="reqID" type="xs:string" />
+          <xs:element minOccurs="0" name="reqSystem" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="reviewer" nillable="true" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" name="status" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="steps" nillable="true" type="xs:anyType" />
+          <xs:element minOccurs="0" name="suites" type="xs:string" />
+          <xs:element minOccurs="0" name="tcID" type="xs:string" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+          <xs:element name="trcount" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ufile" nillable="true" type="ns2:TCFileInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tempProdInfo">
+        <xs:sequence>
+          <xs:element name="activeFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="attributes" nillable="true" type="ns2:Attribute" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="globalCombAttr" nillable="true" type="ns2:Attribute" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="globalGenAttr" nillable="true" type="ns2:Attribute" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="productGenAttr" nillable="true" type="ns2:Attribute" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="versionList" nillable="true" type="ns2:TCVersion" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createTestSuiteResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:TSResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TSResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="duplicateEntities" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="errorEvent" type="ns5:ErrorEvent" />
+          <xs:element minOccurs="0" name="ts_displayName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchTestSuite">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sc" type="ns1:SearchCriterion" />
+          <xs:element name="countOnly" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchTestSuiteResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:TSPagedObject" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TSPagedObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:TSInfo" />
+          <xs:element name="totalCount" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchTestSuiteDetails">
+        <xs:sequence>
+          <xs:element name="ts_id" type="xs:int" />
+          <xs:element name="treeDepth" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchTestSuiteDetailsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:TSInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchSuiteRunDetails">
+        <xs:sequence>
+          <xs:element name="tsr_id" type="xs:int" />
+          <xs:element name="treeDepth" type="xs:int" />
+          <xs:element name="fetchConfig" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchSuiteRunDetailsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="ns4:SuiteRun" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchTestSuiteDetailsEx">
+        <xs:sequence>
+          <xs:element name="ts_id" type="xs:int" />
+          <xs:element name="fetchChildTC" type="xs:boolean" />
+          <xs:element name="fetchChildTS" type="xs:boolean" />
+          <xs:element name="fetchTCConfig" type="xs:boolean" />
+          <xs:element name="pageNumber" type="xs:int" />
+          <xs:element name="pageSize" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchTestSuiteDetailsExResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:TSDetailsPgdObj" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TSDetailsPgdObj">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="tns:TSEntity" />
+          <xs:element name="totalCount" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchSuiteRunDetailsEx">
+        <xs:sequence>
+          <xs:element name="tsr_id" type="xs:int" />
+          <xs:element name="fetchChildTR" type="xs:boolean" />
+          <xs:element name="fetchChildTSR" type="xs:boolean" />
+          <xs:element name="fetchTRConfig" type="xs:boolean" />
+          <xs:element name="fetchOwners" type="xs:boolean" />
+          <xs:element name="pageNumber" type="xs:int" />
+          <xs:element name="pageSize" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchSuiteRunDetailsExResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:TSRDetailsPgdObj" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TSRDetailsPgdObj">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="list" nillable="true" type="ns4:TSREntity" />
+          <xs:element name="totalCount" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FetchDuplicateTSEntities">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tsIdList" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FetchDuplicateTSEntitiesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:TSResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="estimateTCExecutionTime">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tcIds" type="xs:int" />
+          <xs:element minOccurs="0" name="sc" type="ns1:SearchCriterion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="selectedConfigs" type="tns:selectedConfigs" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="estimateTCExecutionTimeResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="estimateTRExecutionTime">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="trIds" type="xs:int" />
+          <xs:element minOccurs="0" name="sc" type="ns1:SearchCriterion" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="estimateTRExecutionTimeResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="estimateTSExecutionTime">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tsIds" type="xs:int" />
+          <xs:element minOccurs="0" name="sc" type="ns1:SearchCriterion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="selectedConfigs" type="tns:selectedConfigs" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="estimateTSExecutionTimeResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addTCToTS">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tsIDs" type="xs:int" />
+          <xs:element minOccurs="0" name="tcSearchob" type="ns1:SearchCriterion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tcIDs" type="xs:int" />
+          <xs:element name="allowDuplicateInSuites" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addTCToTSResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addTSToTS">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tsIDs" type="xs:int" />
+          <xs:element minOccurs="0" name="tsToBeAddedSearchob" type="ns1:SearchCriterion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tsToBeAddedList" type="xs:int" />
+          <xs:element name="allowDuplicateInSuites" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SessionID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addTSToTSResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ns2="http://webservice.server.teststudio.tools.cst.adobe.com/" xmlns:tns="ts.dto.common.server.teststudio.tools.cst.adobe.com" xmlns:ns1="dto.common.server.teststudio.tools.cst.adobe.com" xmlns:ns3="tr.dto.common.server.teststudio.tools.cst.adobe.com" targetNamespace="ts.dto.common.server.teststudio.tools.cst.adobe.com" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="dto.common.server.teststudio.tools.cst.adobe.com" />
+      <xs:import namespace="http://webservice.server.teststudio.tools.cst.adobe.com/" />
+      <xs:import namespace="tr.dto.common.server.teststudio.tools.cst.adobe.com" />
+      <xs:complexType name="SuiteRun">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="automationData" type="xs:string" />
+          <xs:element minOccurs="0" name="createdBy" type="ns1:IDNameObject" />
+          <xs:element name="creationDate" type="xs:long" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="entityLevel" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="entityPath" nillable="true" type="xs:string" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element name="isDeleted" type="xs:boolean" />
+          <xs:element name="modificationDate" type="xs:long" />
+          <xs:element minOccurs="0" name="modifiedBy" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="owners" nillable="true" type="ns1:IDNameObject" />
+          <xs:element name="parentSuiteID" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="parentSuiteRunId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="selConfig" nillable="true" type="ns2:selectedConfigs" />
+          <xs:element name="suiteId" type="xs:int" />
+          <xs:element minOccurs="0" name="suiteRunDisplayName" type="xs:string" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tsrEntity" nillable="true" type="tns:TSREntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TSREntity">
+        <xs:sequence>
+          <xs:element name="entityType" type="xs:int" />
+          <xs:element name="suiteOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="tr" type="ns3:TRInfo" />
+          <xs:element minOccurs="0" name="tsr" type="tns:SuiteRun" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:tns="dto.common.server.teststudio.tools.cst.adobe.com" targetNamespace="dto.common.server.teststudio.tools.cst.adobe.com" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="SearchCriterion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="associatedProduct" type="tns:IDNameObject" />
+          <xs:element name="associationType" type="xs:int" />
+          <xs:element name="caseSensitive" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="filterList" nillable="true" type="tns:Filter" />
+          <xs:element minOccurs="0" name="filterRelationship" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="groupby" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="groupbyValues" nillable="true" type="xs:string" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="orderList" nillable="true" type="tns:OrderFilter" />
+          <xs:element name="pageNumber" type="xs:int" />
+          <xs:element name="pageSize" type="xs:int" />
+          <xs:element minOccurs="0" name="searchOwner" type="tns:IDNameObject" />
+          <xs:element minOccurs="0" name="searchType" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="IDNameObject">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Filter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="extension" type="xs:string" />
+          <xs:element minOccurs="0" name="fieldName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="fieldValue" nillable="true" type="xs:string" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="operator" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OrderFilter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fieldName" type="xs:string" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element minOccurs="0" name="sortOrder" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ns2="tc.dto.common.server.teststudio.tools.cst.adobe.com" xmlns:tns="tr.dto.common.server.teststudio.tools.cst.adobe.com" xmlns:ns1="dto.common.server.teststudio.tools.cst.adobe.com" targetNamespace="tr.dto.common.server.teststudio.tools.cst.adobe.com" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="dto.common.server.teststudio.tools.cst.adobe.com" />
+      <xs:import namespace="tc.dto.common.server.teststudio.tools.cst.adobe.com" />
+      <xs:complexType name="DuplicateTRCriteria">
+        <xs:sequence>
+          <xs:element name="checkBuildNo" type="xs:boolean" />
+          <xs:element name="checkConf" type="xs:boolean" />
+          <xs:element name="checkMilestone" type="xs:boolean" />
+          <xs:element name="checkProduct" type="xs:boolean" />
+          <xs:element name="checkSID" type="xs:boolean" />
+          <xs:element name="checkVersion" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TRInfo">
+        <xs:sequence>
+          <xs:element name="areStepsSnapShoted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="assignedTo" type="ns1:IDNameObject" />
+          <xs:element name="assignmentDate" type="xs:long" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="attr" nillable="true" type="ns2:Attribute" />
+          <xs:element minOccurs="0" name="automationData" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="bugsid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="buildNbr" type="xs:string" />
+          <xs:element name="category" type="xs:int" />
+          <xs:element minOccurs="0" name="createdBy" type="ns1:IDNameObject" />
+          <xs:element name="creationDate" type="xs:long" />
+          <xs:element name="eendDate" type="xs:long" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="entityLevel" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="entityPath" nillable="true" type="xs:string" />
+          <xs:element name="estartDate" type="xs:long" />
+          <xs:element minOccurs="0" name="execMode" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" name="externalID" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="gattr" nillable="true" type="ns2:Attribute" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="globalGeneralAttr" nillable="true" type="ns2:Attribute" />
+          <xs:element name="id" type="xs:int" />
+          <xs:element name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="milestone" type="xs:string" />
+          <xs:element name="modificationDate" type="xs:long" />
+          <xs:element minOccurs="0" name="modifiedBy" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" name="notes" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="owners" nillable="true" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="parentSuiteRunId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="priority" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" name="product" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="productGenAttr" nillable="true" type="ns2:Attribute" />
+          <xs:element minOccurs="0" name="productVersion" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" name="reason" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="refFiles" nillable="true" type="tns:TRFile" />
+          <xs:element minOccurs="0" name="rootSuiteRunDisplayname" type="xs:string" />
+          <xs:element name="rootSuiteRunId" type="xs:int" />
+          <xs:element minOccurs="0" name="status" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="steps" nillable="true" type="tns:TRStepInfo" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="subArea" nillable="true" type="ns1:IDNameObject" />
+          <xs:element minOccurs="0" name="suiteName" type="xs:string" />
+          <xs:element name="suiteRunId" type="xs:int" />
+          <xs:element minOccurs="0" name="tc_displayname" type="xs:string" />
+          <xs:element name="tc_id" type="xs:int" />
+          <xs:element minOccurs="0" name="testcycle" type="xs:string" />
+          <xs:element minOccurs="0" name="testcyclematrix" type="xs:string" />
+          <xs:element minOccurs="0" name="testrunName" type="xs:string" />
+          <xs:element name="time" type="xs:int" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+          <xs:element minOccurs="0" name="tr_id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ufiles" nillable="true" type="tns:TRFile" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TRFile">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="addedBy" type="ns1:IDNameObject" />
+          <xs:element name="fileId" type="xs:long" />
+          <xs:element minOccurs="0" name="fileName" type="xs:string" />
+          <xs:element name="filetype" type="xs:int" />
+          <xs:element name="isUploaded" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ref" type="xs:string" />
+          <xs:element minOccurs="0" name="refFileTypeName" type="ns1:IDNameObject" />
+          <xs:element name="trId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TRStepInfo">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns2:TCStepInfo">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="aresult" type="xs:string" />
+              <xs:element minOccurs="0" name="status" type="ns1:IDNameObject" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="TestStudio_fetchSuiteRunDetailsEx">
+    <part name="fetchSuiteRunDetailsEx" element="tns:fetchSuiteRunDetailsEx" />
+  </message>
+  <message name="TestStudio_exportAllProductIdNameResponse">
+    <part name="exportAllProductIdNameResponse" element="tns:exportAllProductIdNameResponse" />
+  </message>
+  <message name="TestStudio_exportPriorities">
+    <part name="exportPriorities" element="tns:exportPriorities" />
+  </message>
+  <message name="TestStudio_exportTRStepStatusResponse">
+    <part name="exportTRStepStatusResponse" element="tns:exportTRStepStatusResponse" />
+  </message>
+  <message name="TestStudio_fetchTestSuiteResponse">
+    <part name="fetchTestSuiteResponse" element="tns:fetchTestSuiteResponse" />
+  </message>
+  <message name="TestStudio_estimateTCExecutionTime">
+    <part name="estimateTCExecutionTime" element="tns:estimateTCExecutionTime" />
+  </message>
+  <message name="TestStudio_addTSToTSResponse">
+    <part name="addTSToTSResponse" element="tns:addTSToTSResponse" />
+  </message>
+  <message name="TestStudio_exportUserInfoResponse">
+    <part name="exportUserInfoResponse" element="tns:exportUserInfoResponse" />
+  </message>
+  <message name="TestStudio_addTCToTSResponse">
+    <part name="addTCToTSResponse" element="tns:addTCToTSResponse" />
+  </message>
+  <message name="TestStudio_exportSearchResponse">
+    <part name="exportSearchResponse" element="tns:exportSearchResponse" />
+  </message>
+  <message name="TestStudio_sessionDetailsResponse">
+    <part name="sessionDetailsResponse" element="tns:sessionDetailsResponse" />
+  </message>
+  <message name="TestStudio_logout">
+    <part name="logout" element="tns:logout" />
+  </message>
+  <message name="TestStudio_createSearch">
+    <part name="createSearch" element="tns:createSearch" />
+  </message>
+  <message name="TestStudio_estimateTRExecutionTimeResponse">
+    <part name="estimateTRExecutionTimeResponse" element="tns:estimateTRExecutionTimeResponse" />
+  </message>
+  <message name="TestStudio_exportData">
+    <part name="exportData" element="tns:exportData" />
+  </message>
+  <message name="TestStudio_fetchSuiteRuns">
+    <part name="fetchSuiteRuns" element="tns:fetchSuiteRuns" />
+  </message>
+  <message name="TestStudio_exportExecModesResponse">
+    <part name="exportExecModesResponse" element="tns:exportExecModesResponse" />
+  </message>
+  <message name="TestStudio_deleteSavedSearch">
+    <part name="deleteSavedSearch" element="tns:deleteSavedSearch" />
+  </message>
+  <message name="TestStudio_cloneTestCasesResponse">
+    <part name="cloneTestCasesResponse" element="tns:cloneTestCasesResponse" />
+  </message>
+  <message name="TestStudio_estimateTSExecutionTimeResponse">
+    <part name="estimateTSExecutionTimeResponse" element="tns:estimateTSExecutionTimeResponse" />
+  </message>
+  <message name="TestStudio_login">
+    <part name="login" element="tns:login" />
+  </message>
+  <message name="TestStudio_exportGlobalAttributesResponse">
+    <part name="exportGlobalAttributesResponse" element="tns:exportGlobalAttributesResponse" />
+  </message>
+  <message name="TestStudio_FetchDuplicateTSEntitiesResponse">
+    <part name="FetchDuplicateTSEntitiesResponse" element="tns:FetchDuplicateTSEntitiesResponse" />
+  </message>
+  <message name="TestStudio_fetchTestSuiteDetailsExResponse">
+    <part name="fetchTestSuiteDetailsExResponse" element="tns:fetchTestSuiteDetailsExResponse" />
+  </message>
+  <message name="TestStudio_exportDataWithCSResponse">
+    <part name="exportDataWithCSResponse" element="tns:exportDataWithCSResponse" />
+  </message>
+  <message name="TestStudio_exportDataWithCS">
+    <part name="exportDataWithCS" element="tns:exportDataWithCS" />
+  </message>
+  <message name="TestStudio_exportDataResponse">
+    <part name="exportDataResponse" element="tns:exportDataResponse" />
+  </message>
+  <message name="TestStudio_sessionDetails">
+    <part name="sessionDetails" element="tns:sessionDetails" />
+  </message>
+  <message name="TestStudio_createTestSuiteResponse">
+    <part name="createTestSuiteResponse" element="tns:createTestSuiteResponse" />
+  </message>
+  <message name="TestStudio_createSearchResponse">
+    <part name="createSearchResponse" element="tns:createSearchResponse" />
+  </message>
+  <message name="TestStudio_estimateTSExecutionTime">
+    <part name="estimateTSExecutionTime" element="tns:estimateTSExecutionTime" />
+  </message>
+  <message name="TestStudio_addTSToTS">
+    <part name="addTSToTS" element="tns:addTSToTS" />
+  </message>
+  <message name="TSWebSercviceException">
+    <part name="TSWebSercviceException" element="tns:TSWebSercviceException" />
+  </message>
+  <message name="TestStudio_modifyTRResponse">
+    <part name="modifyTRResponse" element="tns:modifyTRResponse" />
+  </message>
+  <message name="TestStudio_logoutResponse">
+    <part name="logoutResponse" element="tns:logoutResponse" />
+  </message>
+  <message name="TestStudio_fetchSuiteRunDetailsExResponse">
+    <part name="fetchSuiteRunDetailsExResponse" element="tns:fetchSuiteRunDetailsExResponse" />
+  </message>
+  <message name="TestStudio_createTestRunsResponse">
+    <part name="createTestRunsResponse" element="tns:createTestRunsResponse" />
+  </message>
+  <message name="TestStudio_exportGlobalAttributes">
+    <part name="exportGlobalAttributes" element="tns:exportGlobalAttributes" />
+  </message>
+  <message name="TestStudio_getNotifications">
+    <part name="getNotifications" element="tns:getNotifications" />
+  </message>
+  <message name="TestStudio_exportSavedSearchResponse">
+    <part name="exportSavedSearchResponse" element="tns:exportSavedSearchResponse" />
+  </message>
+  <message name="TestStudio_bulkUpdateResponse">
+    <part name="bulkUpdateResponse" element="tns:bulkUpdateResponse" />
+  </message>
+  <message name="TestStudio_deleteData">
+    <part name="deleteData" element="tns:deleteData" />
+  </message>
+  <message name="SessionValidationException">
+    <part name="SessionValidationException" element="tns:SessionValidationException" />
+  </message>
+  <message name="TestStudio_createTestSuite">
+    <part name="createTestSuite" element="tns:createTestSuite" />
+  </message>
+  <message name="TestStudio_modifyTR">
+    <part name="modifyTR" element="tns:modifyTR" />
+  </message>
+  <message name="TestStudio_fetchAmalgmConfigs">
+    <part name="fetchAmalgmConfigs" element="tns:fetchAmalgmConfigs" />
+  </message>
+  <message name="TestStudio_exportAllProductIdName">
+    <part name="exportAllProductIdName" element="tns:exportAllProductIdName" />
+  </message>
+  <message name="TestStudio_loginResponse">
+    <part name="loginResponse" element="tns:loginResponse" />
+  </message>
+  <message name="TestStudio_exportTRStepStatus">
+    <part name="exportTRStepStatus" element="tns:exportTRStepStatus" />
+  </message>
+  <message name="TestStudio_exportUserInfo">
+    <part name="exportUserInfo" element="tns:exportUserInfo" />
+  </message>
+  <message name="TestStudio_exportProductInfo">
+    <part name="exportProductInfo" element="tns:exportProductInfo" />
+  </message>
+  <message name="TestStudio_exportTRReasonList">
+    <part name="exportTRReasonList" element="tns:exportTRReasonList" />
+  </message>
+  <message name="TestStudio_fetchTestSuite">
+    <part name="fetchTestSuite" element="tns:fetchTestSuite" />
+  </message>
+  <message name="TestStudio_exportSearch">
+    <part name="exportSearch" element="tns:exportSearch" />
+  </message>
+  <message name="TestStudio_exportTRReasonListResponse">
+    <part name="exportTRReasonListResponse" element="tns:exportTRReasonListResponse" />
+  </message>
+  <message name="TestStudio_fetchSuiteRunDetailsResponse">
+    <part name="fetchSuiteRunDetailsResponse" element="tns:fetchSuiteRunDetailsResponse" />
+  </message>
+  <message name="TestStudio_addTCToTS">
+    <part name="addTCToTS" element="tns:addTCToTS" />
+  </message>
+  <message name="TestStudio_exportDefaultAttributes">
+    <part name="exportDefaultAttributes" element="tns:exportDefaultAttributes" />
+  </message>
+  <message name="TestStudio_fetchTestSuiteDetails">
+    <part name="fetchTestSuiteDetails" element="tns:fetchTestSuiteDetails" />
+  </message>
+  <message name="TestStudio_FetchDuplicateTSEntities">
+    <part name="FetchDuplicateTSEntities" element="tns:FetchDuplicateTSEntities" />
+  </message>
+  <message name="TestStudio_fetchSuiteRunsResponse">
+    <part name="fetchSuiteRunsResponse" element="tns:fetchSuiteRunsResponse" />
+  </message>
+  <message name="TestStudio_cloneTestCases">
+    <part name="cloneTestCases" element="tns:cloneTestCases" />
+  </message>
+  <message name="TestStudio_exportDefaultAttributesResponse">
+    <part name="exportDefaultAttributesResponse" element="tns:exportDefaultAttributesResponse" />
+  </message>
+  <message name="TestStudio_bulkUpdate">
+    <part name="bulkUpdate" element="tns:bulkUpdate" />
+  </message>
+  <message name="TestStudio_exportExecModes">
+    <part name="exportExecModes" element="tns:exportExecModes" />
+  </message>
+  <message name="TestStudio_createTestRuns">
+    <part name="createTestRuns" element="tns:createTestRuns" />
+  </message>
+  <message name="TestStudio_estimateTCExecutionTimeResponse">
+    <part name="estimateTCExecutionTimeResponse" element="tns:estimateTCExecutionTimeResponse" />
+  </message>
+  <message name="TestStudio_importData">
+    <part name="importData" element="tns:importData" />
+  </message>
+  <message name="TestStudio_exportProductInfoResponse">
+    <part name="exportProductInfoResponse" element="tns:exportProductInfoResponse" />
+  </message>
+  <message name="TestStudio_exportTRStatus">
+    <part name="exportTRStatus" element="tns:exportTRStatus" />
+  </message>
+  <message name="TestStudio_deleteSavedSearchResponse">
+    <part name="deleteSavedSearchResponse" element="tns:deleteSavedSearchResponse" />
+  </message>
+  <message name="TestStudio_fetchSuiteRunDetails">
+    <part name="fetchSuiteRunDetails" element="tns:fetchSuiteRunDetails" />
+  </message>
+  <message name="TestStudio_exportTCStatus">
+    <part name="exportTCStatus" element="tns:exportTCStatus" />
+  </message>
+  <message name="TestStudio_exportPrioritiesResponse">
+    <part name="exportPrioritiesResponse" element="tns:exportPrioritiesResponse" />
+  </message>
+  <message name="TestStudio_getNotificationsResponse">
+    <part name="getNotificationsResponse" element="tns:getNotificationsResponse" />
+  </message>
+  <message name="TestStudio_estimateTRExecutionTime">
+    <part name="estimateTRExecutionTime" element="tns:estimateTRExecutionTime" />
+  </message>
+  <message name="TestStudio_importDataResponse">
+    <part name="importDataResponse" element="tns:importDataResponse" />
+  </message>
+  <message name="TestStudio_exportSavedSearch">
+    <part name="exportSavedSearch" element="tns:exportSavedSearch" />
+  </message>
+  <message name="TestStudio_fetchTestSuiteDetailsEx">
+    <part name="fetchTestSuiteDetailsEx" element="tns:fetchTestSuiteDetailsEx" />
+  </message>
+  <message name="TestStudio_fetchAmalgmConfigsResponse">
+    <part name="fetchAmalgmConfigsResponse" element="tns:fetchAmalgmConfigsResponse" />
+  </message>
+  <message name="TestStudio_fetchTestSuiteDetailsResponse">
+    <part name="fetchTestSuiteDetailsResponse" element="tns:fetchTestSuiteDetailsResponse" />
+  </message>
+  <message name="TestStudio_exportTRStatusResponse">
+    <part name="exportTRStatusResponse" element="tns:exportTRStatusResponse" />
+  </message>
+  <message name="TestStudio_exportTCStatusResponse">
+    <part name="exportTCStatusResponse" element="tns:exportTCStatusResponse" />
+  </message>
+  <message name="TestStudio_deleteDataResponse">
+    <part name="deleteDataResponse" element="tns:deleteDataResponse" />
+  </message>
+  <portType name="TestStudio">
+    <operation name="FetchDuplicateTSEntities" parameterOrder="FetchDuplicateTSEntities">
+      <input message="tns:TestStudio_FetchDuplicateTSEntities" />
+      <output message="tns:TestStudio_FetchDuplicateTSEntitiesResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="addTCToTS" parameterOrder="addTCToTS">
+      <input message="tns:TestStudio_addTCToTS" />
+      <output message="tns:TestStudio_addTCToTSResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="addTSToTS" parameterOrder="addTSToTS">
+      <input message="tns:TestStudio_addTSToTS" />
+      <output message="tns:TestStudio_addTSToTSResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="bulkUpdate" parameterOrder="bulkUpdate">
+      <input message="tns:TestStudio_bulkUpdate" />
+      <output message="tns:TestStudio_bulkUpdateResponse" />
+    </operation>
+    <operation name="cloneTestCases" parameterOrder="cloneTestCases">
+      <input message="tns:TestStudio_cloneTestCases" />
+      <output message="tns:TestStudio_cloneTestCasesResponse" />
+    </operation>
+    <operation name="createSearch" parameterOrder="createSearch">
+      <input message="tns:TestStudio_createSearch" />
+      <output message="tns:TestStudio_createSearchResponse" />
+    </operation>
+    <operation name="createTestRuns" parameterOrder="createTestRuns">
+      <input message="tns:TestStudio_createTestRuns" />
+      <output message="tns:TestStudio_createTestRunsResponse" />
+    </operation>
+    <operation name="createTestSuite" parameterOrder="createTestSuite">
+      <input message="tns:TestStudio_createTestSuite" />
+      <output message="tns:TestStudio_createTestSuiteResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="deleteData" parameterOrder="deleteData">
+      <input message="tns:TestStudio_deleteData" />
+      <output message="tns:TestStudio_deleteDataResponse" />
+    </operation>
+    <operation name="deleteSavedSearch" parameterOrder="deleteSavedSearch">
+      <input message="tns:TestStudio_deleteSavedSearch" />
+      <output message="tns:TestStudio_deleteSavedSearchResponse" />
+    </operation>
+    <operation name="estimateTCExecutionTime" parameterOrder="estimateTCExecutionTime">
+      <input message="tns:TestStudio_estimateTCExecutionTime" />
+      <output message="tns:TestStudio_estimateTCExecutionTimeResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="estimateTRExecutionTime" parameterOrder="estimateTRExecutionTime">
+      <input message="tns:TestStudio_estimateTRExecutionTime" />
+      <output message="tns:TestStudio_estimateTRExecutionTimeResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="estimateTSExecutionTime" parameterOrder="estimateTSExecutionTime">
+      <input message="tns:TestStudio_estimateTSExecutionTime" />
+      <output message="tns:TestStudio_estimateTSExecutionTimeResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="exportAllProductIdName" parameterOrder="exportAllProductIdName">
+      <input message="tns:TestStudio_exportAllProductIdName" />
+      <output message="tns:TestStudio_exportAllProductIdNameResponse" />
+    </operation>
+    <operation name="exportData" parameterOrder="exportData">
+      <input message="tns:TestStudio_exportData" />
+      <output message="tns:TestStudio_exportDataResponse" />
+    </operation>
+    <operation name="exportDataWithCS" parameterOrder="exportDataWithCS">
+      <input message="tns:TestStudio_exportDataWithCS" />
+      <output message="tns:TestStudio_exportDataWithCSResponse" />
+    </operation>
+    <operation name="exportDefaultAttributes" parameterOrder="exportDefaultAttributes">
+      <input message="tns:TestStudio_exportDefaultAttributes" />
+      <output message="tns:TestStudio_exportDefaultAttributesResponse" />
+    </operation>
+    <operation name="exportExecModes" parameterOrder="exportExecModes">
+      <input message="tns:TestStudio_exportExecModes" />
+      <output message="tns:TestStudio_exportExecModesResponse" />
+    </operation>
+    <operation name="exportGlobalAttributes" parameterOrder="exportGlobalAttributes">
+      <input message="tns:TestStudio_exportGlobalAttributes" />
+      <output message="tns:TestStudio_exportGlobalAttributesResponse" />
+    </operation>
+    <operation name="exportPriorities" parameterOrder="exportPriorities">
+      <input message="tns:TestStudio_exportPriorities" />
+      <output message="tns:TestStudio_exportPrioritiesResponse" />
+    </operation>
+    <operation name="exportProductInfo" parameterOrder="exportProductInfo">
+      <input message="tns:TestStudio_exportProductInfo" />
+      <output message="tns:TestStudio_exportProductInfoResponse" />
+    </operation>
+    <operation name="exportSavedSearch" parameterOrder="exportSavedSearch">
+      <input message="tns:TestStudio_exportSavedSearch" />
+      <output message="tns:TestStudio_exportSavedSearchResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="exportSearch" parameterOrder="exportSearch">
+      <input message="tns:TestStudio_exportSearch" />
+      <output message="tns:TestStudio_exportSearchResponse" />
+    </operation>
+    <operation name="exportTCStatus" parameterOrder="exportTCStatus">
+      <input message="tns:TestStudio_exportTCStatus" />
+      <output message="tns:TestStudio_exportTCStatusResponse" />
+    </operation>
+    <operation name="exportTRReasonList" parameterOrder="exportTRReasonList">
+      <input message="tns:TestStudio_exportTRReasonList" />
+      <output message="tns:TestStudio_exportTRReasonListResponse" />
+    </operation>
+    <operation name="exportTRStatus" parameterOrder="exportTRStatus">
+      <input message="tns:TestStudio_exportTRStatus" />
+      <output message="tns:TestStudio_exportTRStatusResponse" />
+    </operation>
+    <operation name="exportTRStepStatus" parameterOrder="exportTRStepStatus">
+      <input message="tns:TestStudio_exportTRStepStatus" />
+      <output message="tns:TestStudio_exportTRStepStatusResponse" />
+    </operation>
+    <operation name="exportUserInfo" parameterOrder="exportUserInfo">
+      <input message="tns:TestStudio_exportUserInfo" />
+      <output message="tns:TestStudio_exportUserInfoResponse" />
+    </operation>
+    <operation name="fetchAmalgmConfigs" parameterOrder="fetchAmalgmConfigs">
+      <input message="tns:TestStudio_fetchAmalgmConfigs" />
+      <output message="tns:TestStudio_fetchAmalgmConfigsResponse" />
+    </operation>
+    <operation name="fetchSuiteRunDetails" parameterOrder="fetchSuiteRunDetails">
+      <input message="tns:TestStudio_fetchSuiteRunDetails" />
+      <output message="tns:TestStudio_fetchSuiteRunDetailsResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="fetchSuiteRunDetailsEx" parameterOrder="fetchSuiteRunDetailsEx">
+      <input message="tns:TestStudio_fetchSuiteRunDetailsEx" />
+      <output message="tns:TestStudio_fetchSuiteRunDetailsExResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="fetchSuiteRuns" parameterOrder="fetchSuiteRuns">
+      <input message="tns:TestStudio_fetchSuiteRuns" />
+      <output message="tns:TestStudio_fetchSuiteRunsResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="fetchTestSuite" parameterOrder="fetchTestSuite">
+      <input message="tns:TestStudio_fetchTestSuite" />
+      <output message="tns:TestStudio_fetchTestSuiteResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="fetchTestSuiteDetails" parameterOrder="fetchTestSuiteDetails">
+      <input message="tns:TestStudio_fetchTestSuiteDetails" />
+      <output message="tns:TestStudio_fetchTestSuiteDetailsResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="fetchTestSuiteDetailsEx" parameterOrder="fetchTestSuiteDetailsEx">
+      <input message="tns:TestStudio_fetchTestSuiteDetailsEx" />
+      <output message="tns:TestStudio_fetchTestSuiteDetailsExResponse" />
+      <fault name="SessionValidationException" message="tns:SessionValidationException" />
+      <fault name="TSWebSercviceException" message="tns:TSWebSercviceException" />
+    </operation>
+    <operation name="getNotifications" parameterOrder="getNotifications">
+      <input message="tns:TestStudio_getNotifications" />
+      <output message="tns:TestStudio_getNotificationsResponse" />
+    </operation>
+    <operation name="importData" parameterOrder="importData">
+      <input message="tns:TestStudio_importData" />
+      <output message="tns:TestStudio_importDataResponse" />
+    </operation>
+    <operation name="login" parameterOrder="login">
+      <input message="tns:TestStudio_login" />
+      <output message="tns:TestStudio_loginResponse" />
+    </operation>
+    <operation name="logout" parameterOrder="logout">
+      <input message="tns:TestStudio_logout" />
+      <output message="tns:TestStudio_logoutResponse" />
+    </operation>
+    <operation name="modifyTR" parameterOrder="modifyTR">
+      <input message="tns:TestStudio_modifyTR" />
+      <output message="tns:TestStudio_modifyTRResponse" />
+    </operation>
+    <operation name="sessionDetails" parameterOrder="sessionDetails">
+      <input message="tns:TestStudio_sessionDetails" />
+      <output message="tns:TestStudio_sessionDetailsResponse" />
+    </operation>
+  </portType>
+  <binding name="TestStudioBinding" type="tns:TestStudio">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="FetchDuplicateTSEntities">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="addTCToTS">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="addTSToTS">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="bulkUpdate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="cloneTestCases">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="createSearch">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="createTestRuns">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="createTestSuite">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteData">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="deleteSavedSearch">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="estimateTCExecutionTime">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="estimateTRExecutionTime">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="estimateTSExecutionTime">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="exportAllProductIdName">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportData">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportDataWithCS">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportDefaultAttributes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportExecModes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportGlobalAttributes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportPriorities">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportProductInfo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportSavedSearch">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="exportSearch">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportTCStatus">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportTRReasonList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportTRStatus">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportTRStepStatus">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="exportUserInfo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fetchAmalgmConfigs">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fetchSuiteRunDetails">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="fetchSuiteRunDetailsEx">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="fetchSuiteRuns">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="fetchTestSuite">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="fetchTestSuiteDetails">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="fetchTestSuiteDetailsEx">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SessionValidationException">
+        <soap:fault use="literal" name="SessionValidationException" namespace="" />
+      </fault>
+      <fault name="TSWebSercviceException">
+        <soap:fault use="literal" name="TSWebSercviceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getNotifications">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="importData">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="login">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="logout">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modifyTR">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="sessionDetails">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="TestStudioService">
+    <port name="TestStudioSoapPort" binding="tns:TestStudioBinding">
+      <soap:address location="http://sjwlapps1.corp.adobe.com:7001/TSSTG/TestStudio" />
+    </port>
+  </service>
+</definitions>

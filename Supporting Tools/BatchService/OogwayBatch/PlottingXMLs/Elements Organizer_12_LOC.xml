@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content>
+  <Product>Elements Organizer</Product>
+  <Version>12</Version>
+  <Series>
+    <Name>Closed-Deferred</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Closed-Fixed</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Closed-NeverFix</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Closed-Withdrawn</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="2">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-NeedsReview</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToBuild</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToDefer</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="1">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToFix</Name>
+    <Data>
+      <Point Day="7" Month="5" Year="2013" Count="15">
+      </Point>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToTest</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-ToTrack</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-Unassigned</Name>
+    <Data>
+    </Data>
+  </Series>
+  <Series>
+    <Name>Open-Unverified</Name>
+    <Data>
+    </Data>
+  </Series>
+</Content>

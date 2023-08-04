@@ -1,0 +1,175 @@
+1) Added new Phase Types
+2) Added following labels
+	29, 31, Not Defined, Not Applicable
+	31 Productivity Value, TCs/hr
+	31 Testing Type, Testing Type:
+3) Added new Table: Release Types
+4) Added entry in Screens table for new master table
+5) Add new field in ProjectVersions table
+
+1) Added new table productSprints
+2) Added new column (ProductSprintID) and corresponding foreign key in Project Phases.
+
+ALTER TABLE ProjectPhases ADD ProductSprintID bigint DEFAULT NULL;
+ALTER TABLE ProjectPhases ADD CONSTRAINT FK_ProjectPhases_ProductSprints FOREIGN KEY (ProductSprintID) REFERENCES ProductSprints(ProductSprintID);
+
+3) Update Screen Name Parameter
+Update Screens Set ScreenIdentifier = 'Define Product Master Data',
+		   PageName = 'DefineProductMasterDataUserControl.ascx' Where ScreenID = 14;
+
+Update ScreenLabels Set ScreenValue= 'Define Product Master Data',
+		   Where ScreenLabelID IN (57,120,175);
+
+4) 
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Tab Define Product Sprints', 'Define Product Sprints');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Tab Locales and Platforms', 'Locales and Platforms');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Grid Sprint', 'Sprint');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Grid Sprint Details', 'Sprint Details');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Grid Start Date', 'Start Date');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Grid End Date', 'End Date');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Product Sprint Mandatory', 'Please specify the Sprint.');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'StartDate', 'Please specify the Sprint Start Date.');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'EndDate', 'Please specify the Sprint End Date.');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Date Check', 'The Sprint End Date should be greater than Sprint Start Date.');
+
+5) 
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('13', 'Label Phase Type', 'Phase Type:');
+
+6)
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('31', 'All Phase Types', 'All Phase Types');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('31', 'All Product Sprints', 'All Sprints');
+
+7) Rename GeoBuilds to LocaleTiers
+8) Add/updated the LocaleTiers
+9) Add/Updated the Locales
+10) Added new order column to Platforms and Locales table
+ALTER TABLE Platforms ADD DisplayOrder int DEFAULT NULL;
+ALTER TABLE Locales ADD DisplayOrder int DEFAULT NULL;
+
+11) Add/Updated the Locales
+12) Add/Updated the Platforms
+13) Drop table ProjectGMDetails
+14) remove table GeoBuilds
+15) add table ProjectBuildDetails
+16) 
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Tab Define Product Builds', 'Define Product Builds');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Grid Build Code', 'Build/Geo Code');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Grid Build', 'Build/Geo Details');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Build Code Mandatory', 'Please specify the Build/Geo Code.');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Grid Locale Tiers', 'Locale Tiers');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Tab Define Project Build Locales', 'Define Project Build Locales');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Grid Locale Code', 'Locale Code');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Button Update Project Build Locales', 'Update Project Build Locales');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('14', 'Grid Project Build', 'Project Build');
+
+17)
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('18', 'Grid Project Build Code', 'Project Build Code');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('18', 'Grid Project Build', 'Project Build');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('18', 'Grid Build No', 'Build No');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('18', 'Grid GM Date', 'GM Date');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('18', 'Grid Build Path', 'Build Path');
+
+18)
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('12', 'Grid Tier', 'Tier');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('12', 'CheckBox Copy Sprints', 'Copy Sprints');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('12', 'CheckBox Copy Project Builds', 'Copy Project Builds');
+
+19)
+RENAME TABLE CoverageDetails TO PhaseCoverageDetails
+
+20) Rename CoverageDetailID to PhaseCoverageDetailID in CoverageDetails table
+
+21) Add new column to projectlocalevsplatformdata
+ALTER TABLE projectlocalevsplatformdata ADD PhaseCoverageDetailID  bigint DEFAULT NULL;
+ALTER TABLE projectlocalevsplatformdata ADD CONSTRAINT FK_projectlocalevsplatformdata_PhaseCoverageDetails FOREIGN KEY (PhaseCoverageDetailID) REFERENCES PhaseCoverageDetails(PhaseCoverageDetailID);
+
+Update projectlocalevsplatformdata PLPD
+INNER JOIN PhaseCoverageDetails PCD
+ON PCD.ProjectPhaseID = PLPD.ProjectPhaseID  
+Set PLPD.PhaseCoverageDetailID = PCD.PhaseCoverageDetailID 
+
+DROP INDEX I_ProjectLocaleVsPlatformData_ProjectPhaseID ON projectlocalevsplatformdata;
+DROP INDEX UI_ProjectLocaleVsPlatformData ON projectlocalevsplatformdata;
+ALTER TABLE projectlocalevsplatformdata DROP FOREIGN KEY FK__ProjectLocaleVsPlatformData_ProjectPhase;
+CREATE INDEX UI_ProjectLocaleVsPlatformData ON projectlocalevsplatformdata (PhaseCoverageDetailID, ProjectPlatformID, ProjectLocaleID);
+ALTER TABLE projectlocalevsplatformdata DROP COLUMN ProjectPhaseID;
+
+22) 
+
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('15', 'Label Coverages', 'Coverages');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('15', 'Label Platforms and Locales', 'Platforms and Locales:');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('15', 'WIN', 'WIN');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('15', 'MAC', 'MAC');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('15', 'Label Distribution Parameters', 'Distribution Parameters:');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('15', 'Label TestCases Repository', 'TestCases Repository:');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('15', 'Test Studio', 'Test Studio');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('15', 'Document', 'Document');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('15', 'Label TestCases Distribution', 'TestCases Distribution:');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('15', 'Label Across Locales/Platforms', 'Across Locales/Platforms:');
+INSERT INTO `screenlabels`(ScreenID, ScreenLabel, ScreenValue) VALUES ('15', 'Platforms', 'Platforms');
+
+
+23) Add Columns to PhaseCoverageDetails Table
+ALTER TABLE PhaseCoverageDetails ADD TestCasesRepository int DEFAULT NULL;
+ALTER TABLE PhaseCoverageDetails ADD TestCasesDistribution int DEFAULT NULL;
+ALTER TABLE PhaseCoverageDetails ADD AcrossLocalesandPlatforms int DEFAULT NULL;
+
+24) Update ScreenLabel tables
+RENAME TABLE ScreenLabels TO ScreenLabelAssociations;
+CREATE TABLE LabelCategories and screenlabels, Screen Label Associations
+
+
+25)
+
+Update Screens Set PageName = 'MaintainHolidaysUserControl.ascx' Where ScreenID = 24;
+Update Screens Set PageName = 'DefineProjectWindUpUserControl.ascx' Where ScreenID = 18;
+Update Screens Set PageName = 'DefineProjectWindUpUserControl.ascx' Where ScreenID = 61;
+Update Screens Set PageName = 'MaintainScreensAndAccessLevelsUserControl.ascx' Where ScreenID = 61;
+Update Screens Set PageName = 'MaintainUserProfileAndPreferencesUserControl.ascx' Where ScreenID = 69;
+Update Screens Set PageName = 'MaintainTeamsUserControl.ascx' Where ScreenID = 50;
+Update Screens Set PageName = 'MaintainVendorsDailyEffortsUserControl.ascx' Where ScreenID = 26;
+Update Screens Set PageName = 'SubmitWSRDataUserControl.ascx' Where ScreenID = 29;
+Update Screens Set PageName = 'ConsolidatedVendorsEffortsUserControl.ascx' Where ScreenID = 27;
+Update Screens Set PageName = 'ConsolidatedStatusReportUserControl.ascx' Where ScreenID = 31;
+Update Screens Set PageName = 'MaintainLocalesVsPlatformsMatrixUserControl.ascx' Where ScreenID = 15;
+
+26)
+Delete From projectlocalevsplatformdata
+Where TestSuiteNo=''
+
+27) Manually delete the rows where testsuiteNo = null
+
+28)
+ALTER TABLE Locales ADD TestStudioKeyID int DEFAULT NULL;
+ALTER TABLE Platforms ADD TestStudioKeyID int DEFAULT NULL;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
